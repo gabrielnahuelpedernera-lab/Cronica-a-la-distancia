@@ -2,123 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi vida hermosa</title>
+    <title>Nuestro Viaje - Para mi vida hermosa</title>
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .card {
-            background: #2b2b2b;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            max-width: 600px;
-            width: 100%;
-            padding: 30px;
-            box-sizing: border-box;
-            text-align: center;
-            border: 1px solid #444;
-        }
-        h1 {
-            color: #ffb6c1;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-        .poem {
-            text-align: left;
-            line-height: 1.6;
-            font-size: 1rem;
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            border-left: 4px solid #ffb6c1;
-            margin-bottom: 25px;
-        }
-        .signature {
-            font-weight: bold;
-            color: #ffb6c1;
-            margin-top: 15px;
-            text-align: right;
-        }
-        .footer-note {
-            font-size: 0.8rem;
-            color: #777;
-            margin-top: 20px;
-        }
+        body { background: #121212; color: #e0e0e0; font-family: 'Georgia', serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .ticket { background: #fff; color: #333; padding: 20px; border-radius: 10px; width: 350px; border: 2px dashed #ff4757; text-align: center; margin-bottom: 20px; }
+        .hero-img { width: 300px; border-radius: 10px; margin-bottom: 20px; border: 4px solid #fff; }
+        .phrase { font-style: italic; font-size: 1.2rem; color: #ff4757; margin: 20px 0; }
+        .audio-player { background: #333; padding: 15px; border-radius: 50px; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Latido Inmenso</h1>
-        <div class="subtitle">"Como si se expandiera un fuego que no se va..."</div>
-        
-        <div class="poem">
-            <p>Ya aviso y te quedaste sin permiso.<br>
-            Ahora sos parte de mi latido,<br>
-            lo más seguro que he sentido.<br>
-            Ya no hay vuelta atrás posible,<br>
-            ya no hay forma de pensarme<br>
-            sin este amor invencible,<br>
-            sin tenerte para completarme.</p>
+    <!-- Tu Foto Principal -->
+    <img src="selfie-auto.jpg" class="hero-img" alt="Nosotros">
 
-            <p>Cada día te amo más y más,<br>
-            sin saber cómo ni por qué será,<br>
-            como si este amor no tuviera final,<br>
-            como si se expandiera un fuego que no se va.</p>
-
-            <p>La distancia debería cesar,<br>
-            debería en algún momento aflojar,<br>
-            y, sin embargo, hace lo contrario:<br>
-            nos recuerda que esto es extraordinario.</p>
-
-            <p>Setecientos kilómetros por medio...<br>
-            no lograron jamás lo que debían.<br>
-            Cada despedida es una promesa<br>
-            de que esto sigue, de que crecía.</p>
-
-            <p>Hoy te espero con el alma abierta,<br>
-            con un café que se enfría despacio,<br>
-            contando el tiempo hasta la puerta<br>
-            donde se abra y donde no abra más espacio.</p>
-
-            <p>Cada beso que nos debemos, cada abrazo que espera guarda,<br>
-            va a llegar y lo sabemos,<br>
-            como se cumple lo que el alma aguarda.</p>
-
-            <p>Vamos a aprender del otro entero,<br>
-            sin apuro, con paciencia y calma,<br>
-            a construir lo que ya siento:<br>
-            un hogar hecho de dos almas.</p>
-
-            <p>Y aunque el mundo no lo sepa,<br>
-            yo sé que esta es de las mejores semanas,<br>
-            porque volví a verte<br>
-            y en tu mirada encontré todo lo que me faltaba.</p>
-
-            <div class="signature">Pablo Alejandro Colusso<br>Te amo, mi vida hermosa.</div>
-        </div>
-
-        <div class="footer-note">
-            Cada recuerdo en foto y cada verso guardado para cuando nos volvamos a encontrar.
-        </div>
+    <!-- El Ticket Personalizado -->
+    <div class="ticket">
+        <h2 style="color: #ff4757;">TICKET DE AMOR</h2>
+        <p><strong>Destino:</strong> Donde estemos juntos</p>
+        <p><strong>Distancia recorrida:</strong> 700km y más</p>
+        <hr>
+        <p class="phrase">"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas."</p>
     </div>
 
+    <!-- Tu Audio -->
+    <div class="audio-player">
+        <audio controls>
+            <source src="poema-gabriel.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+        </audio>
+    </div>
+
+    <script>
+        console.log("Experiencia cargada con éxito para ustedes dos.");
+    </script>
 </body>
 </html>
