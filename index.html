@@ -32,7 +32,6 @@
         overflow-x: hidden;
     }
 
-    /* Barra de progreso de lectura */
     .progress {
         position: fixed;
         top: 0; left: 0; height: 4px;
@@ -42,7 +41,6 @@
         transition: width 0.1s ease-out;
     }
 
-    /* Hero */
     .hero {
         position: relative;
         min-height: 100vh;
@@ -52,20 +50,31 @@
         align-items: center;
         text-align: center;
         padding: 40px 20px;
-        background: linear-gradient(to bottom, rgba(253, 251, 247, 0.8), var(--bg)), url('hero-beso-noche.jpg') center/cover no-repeat;
+        background: linear-gradient(to bottom, rgba(253, 251, 247, 0.4), var(--bg)), url('hero-beso-noche.jpg') center/cover no-repeat;
+        color: white;
     }
 
-    .hero-content {
-        max-width: 800px;
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1;
+    }
+
+    .hero-content, .stamp, .scroll-cue {
+        position: relative;
         z-index: 2;
     }
+
+    .hero-content { max-width: 800px; }
 
     .eyebrow {
         font-family: 'Space Mono', monospace;
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: var(--accent);
+        color: #ffb6c1;
         margin-bottom: 15px;
     }
 
@@ -77,11 +86,11 @@
         margin-bottom: 20px;
     }
 
-    .amp { color: var(--accent); padding: 0 5px; }
+    .amp { color: #ffb6c1; padding: 0 5px; }
 
     .sub {
         font-size: clamp(1rem, 2vw, 1.25rem);
-        color: var(--muted);
+        color: #f0f0f0;
         max-width: 600px;
         margin: 0 auto;
     }
@@ -89,27 +98,26 @@
     .stamp {
         position: absolute;
         top: 30px; right: 30px;
-        border: 1px dashed var(--accent);
+        border: 1px dashed rgba(255,255,255,0.7);
         padding: 10px 15px;
         border-radius: 8px;
         font-family: 'Space Mono', monospace;
         font-size: 0.75rem;
-        color: var(--muted);
-        background: rgba(255,255,255,0.8);
+        color: #fff;
+        background: rgba(0,0,0,0.3);
     }
-    .stamp b { display: block; color: var(--text); }
+    .stamp b { display: block; color: #ffb6c1; }
 
     .scroll-cue {
         position: absolute;
         bottom: 30px;
         font-family: 'Space Mono', monospace;
         font-size: 0.8rem;
-        color: var(--muted-light);
+        color: #fff;
     }
 
-    /* Contenedores y secciones */
     .wrap-narrow { max-width: 700px; margin: 0 auto; padding: 0 20px; text-align: center; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
     section { padding: 100px 0; }
 
@@ -159,7 +167,7 @@
     .lbl { font-weight: 500; font-size: 1.1rem; margin-bottom: 5px; }
     .since { font-size: 0.85rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
 
-    /* Cronología */
+    /* Cronología con fotos */
     .chrono ul {
         list-style: none;
         position: relative;
@@ -177,7 +185,7 @@
 
     .chrono li {
         position: relative;
-        margin-bottom: 50px;
+        margin-bottom: 70px;
         padding-left: 30px;
     }
 
@@ -201,16 +209,55 @@
 
     .chrono .cap {
         font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         margin-bottom: 10px;
     }
 
     .chrono .body {
         color: var(--muted);
         font-size: 1.05rem;
+        margin-bottom: 20px;
     }
 
-    /* Carta */
+    .chrono-img {
+        width: 100%;
+        max-height: 450px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        margin-top: 15px;
+    }
+
+    /* Galería de Recuerdos / Fotos Extras */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .gallery-item {
+        background: var(--surface);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+    }
+
+    .gallery-caption {
+        padding: 15px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--muted);
+    }
+
+    /* Carta / Poema */
     .letter-section { background: var(--surface); text-align: center; }
     .letter-wrap { max-width: 700px; margin: 0 auto; padding: 0 20px; }
 
@@ -223,10 +270,10 @@
     }
 
     footer .serif { font-family: 'Fraunces', serif; font-size: 1.5rem; margin-bottom: 20px; }
-    footer .eyebrow { color: var(--accent); margin-bottom: 10px; }
+    footer .eyebrow { color: #ffb6c1; margin-bottom: 10px; }
     footer .fine { font-size: 0.8rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
 
-    /* Efectos de desvanecimiento (Reveal) */
+    /* Animaciones Reveal */
     .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -297,15 +344,16 @@
         <div class="date">31.12.2025</div>
         <div>
           <div class="cap">Nuestro primer Año Nuevo</div>
-          <div class="body">Esa noche la pasamos juntos, cerca, compartiendo algo que no se puede explicar del todo con palabras. Conectamos profundamente y entendí que quería seguir viviendo momentos así con vos.</div>
+          <div class="body">Esa noche la pasamos juntos, cerca, compartiendo algo que no se puede explicar del todo con palabras. Conectamos profundamente, disfrutamos cada instante y entendí que quería seguir viviendo momentos así con vos.</div>
         </div>
+        <img src="brindis-fin-de-anio.jpg" alt="Brindis de fin de año" class="chrono-img">
       </li>
 
       <li class="reveal">
         <div class="date">Principios de 2026</div>
         <div>
           <div class="cap">La distancia</div>
-          <div class="body">La vida nos puso a prueba cuando te mudaste a Buenos Aires. Ahí empezó nuestra relación a distancia, transformándose en la certeza de que lo nuestro no depende de los kilómetros.</div>
+          <div class="body">La vida nos puso a prueba cuando te mudaste a Buenos Aires. Ahí empezó nuestra relación a distancia. Pero lo que podría haber sido un límite, se transformó en una certeza: lo nuestro no depende de los kilómetros.</div>
         </div>
       </li>
 
@@ -313,8 +361,9 @@
         <div class="date">08.07.2026</div>
         <div>
           <div class="cap">Volver a encontrarnos</div>
-          <div class="body">Después de meses, volvimos a vernos. Y todo seguía intacto: el abrazo, la conexión y la forma en que te siento, más fuerte que nunca.</div>
+          <div class="body">Después de meses, volvimos a vernos. Y todo seguía intacto. El abrazo, la conexión, la forma en que te siento… todo seguía ahí, más fuerte que nunca.</div>
         </div>
+        <img src="abrazo-arcos.jpg" alt="Abrazo bajo los arcos" class="chrono-img">
       </li>
 
       <li class="reveal">
@@ -323,16 +372,54 @@
           <div class="cap">El compromiso</div>
           <div class="body">Ese día te elegí para siempre. Nos comprometimos con la certeza de que esto no es pasajero. Mi amor por vos es incondicional, profundo y eterno.</div>
         </div>
+        <img src="anillos.jpg" alt="Anillos de compromiso" class="chrono-img">
       </li>
 
       <li class="reveal">
         <div class="date">Hoy</div>
         <div>
           <div class="cap">Lo que somos</div>
-          <div class="body">Hoy sigo eligiéndote en cada segundo. Te amo, te valoro y te disfruto en cada momento, incluso en la distancia. Nada cambia lo que siento por vos.</div>
+          <div class="body">Hoy sigo eligiéndote en cada segundo. Te amo, te valoro y te disfruto en cada momento, incluso en la distancia. Nada cambia lo que siento por vos: mi amor permanece intacto, impoluto, y es para siempre.</div>
         </div>
       </li>
     </ul>
+  </div>
+</section>
+
+<!-- ÁLBUM DE FOTOGRAFÍAS -->
+<section style="background-color: var(--accent-light); padding: 80px 0;">
+  <div class="wrap">
+    <div class="wrap-narrow reveal" style="margin-bottom: 40px;">
+      <p class="eyebrow">Galería</p>
+      <h2 class="section-title">Instantes que guardamos en el alma</h2>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="jardin-japones-selfie.jpg" alt="Selfie en el Jardín Japonés">
+        <div class="gallery-caption">Paseando por el Jardín Japonés</div>
+      </div>
+      <div class="gallery-item">
+        <img src="cerezo-puente-rojo.jpg" alt="Cerezo y puente rojo">
+        <div class="gallery-caption">El puente rojo y los cerezos</div>
+      </div>
+      <div class="gallery-item">
+        <img src="jardin-panoramica.jpg" alt="Panorámica del jardín">
+        <div class="gallery-caption">Vistas que enamoran</div>
+      </div>
+      <div class="gallery-item">
+        <img src="koi.jpg" alt="Peces Koi">
+        <div class="gallery-caption">Fluyendo juntos</div>
+      </div>
+      <div class="gallery-item">
+        <img src="kimono-museo.jpg" alt="Kimono en museo">
+        <div class="gallery-caption">Arte y cultura</div>
+      </div>
+      <div class="gallery-item">
+        <img src="beso-arcos.jpg" alt="Beso bajo los arcos">
+        <div class="gallery-caption">Complicidad en cada rincón</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -353,25 +440,28 @@
 </footer>
 
 <script>
-    // Contador automático de días
+    // Contador automático de días exactos
     const startDate = new Date('2025-10-11');
     const today = new Date();
     const diffTime = Math.abs(today - startDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     document.getElementById('dayCount').innerText = diffDays;
 
-    // Efecto de barra de progreso y aparición al hacer scroll
+    // Efecto barra de progreso y aparición suave al hacer scroll
     window.addEventListener('scroll', () => {
         let winScroll = document.documentElement.scrollTop;
         let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
 
         document.querySelectorAll(".reveal").forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) {
                 el.classList.add("active");
             }
         });
     });
+    
+    // Activar los elementos iniciales visibles al cargar
+    window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
