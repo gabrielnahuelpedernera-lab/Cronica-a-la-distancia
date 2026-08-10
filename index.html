@@ -4,57 +4,108 @@
     <meta charset="UTF-8">
     <title>Crónica de nuestro amor: Gabriel y Pablo</title>
     <style>
-        body { background: #0f0f0f; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { max-width: 700px; width: 100%; text-align: center; }
-        h1 { color: #d63031; font-size: 2.5rem; margin-bottom: 5px; }
-        .sub { font-size: 1.2rem; color: #b2bec3; margin-bottom: 30px; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap');
         
-        .section { background: #1a1a1a; padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
-        .highlight { color: #fab1a0; font-weight: bold; }
+        body { 
+            margin: 0; 
+            background-color: #fdf6f3; /* Beige muy suave */
+            color: #5a4a4a; /* Marrón elegante */
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.8; 
+        }
         
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; }
-        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 2px solid #333; }
+        header { padding: 80px 20px; text-align: center; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #a83232; margin-bottom: 5px; } /* Rojo elegante */
+        #counter { font-size: 1.1rem; color: #d67d8d; font-weight: 500; } /* Rosa empolvado */
         
-        .dedicatoria { font-style: italic; border-left: 4px solid #d63031; padding-left: 20px; text-align: left; margin: 20px 0; }
+        .section { padding: 60px 20px; max-width: 600px; margin: auto; text-align: center; }
+        .hero-img { 
+            width: 100%; 
+            border-radius: 20px; 
+            margin: 25px 0; 
+            box-shadow: 0 10px 30px rgba(168, 50, 50, 0.15); 
+            border: 4px solid #fff; 
+        }
         
-        .audio-section { background: #222; padding: 20px; border-radius: 20px; margin-top: 20px; }
+        .dedicacion-final { 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 30px; 
+            margin: 40px auto; 
+            border: 1px solid #f2e2e2;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .phrase { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-size: 1.4rem; 
+            color: #8b2626; 
+            margin-bottom: 20px; 
+        }
+        
+        .final-anniversary { 
+            font-size: 2rem; 
+            color: #d67d8d; 
+            font-family: 'Playfair Display', serif; 
+            margin-top: 30px; 
+            font-weight: bold; 
+        }
+        
+        footer { padding: 50px; text-align: center; color: #a83232; }
+        audio { 
+            width: 100%; 
+            max-width: 350px; 
+            margin-top: 20px;
+            filter: sepia(0.5); /* Le da un tono más cálido al player */
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
+<header>
     <h1>Crónica de nuestro amor</h1>
-    <p class="sub">Gabriel & Pablo | 700 km de amor compartido</p>
+    <p>Gabriel & Pablo</p>
+    <div id="counter">Cargando nuestra historia...</div>
+</header>
 
-    <div class="section">
-        <h3>El Comienzo (11 de Octubre, 2025)</h3>
-        <p>Todo nació en <span class="highlight">General Cabrera</span>. Allí nos conocimos, allí nos pusimos de novios y allí descubrimos esa conexión única en nuestro primer año nuevo juntos, brindando y entregándonos todo el amor que teníamos para dar.</p>
-    </div>
+<section class="section">
+    <p>Todo comenzó un 11 de octubre de 2025 en General Cabrera. Allí donde nuestras vidas se encontraron, decidimos escribir una historia que ha demostrado ser más fuerte que cualquier kilómetro.</p>
+    <img src="selfie-auto.jpg" class="hero-img" alt="Nuestro inicio">
+</section>
 
-    <div class="section">
-        <h3>La Distancia y la Promesa (2026)</h3>
-        <p>A pesar de que Pablo tuvo que volver a Buenos Aires y nos separaron 700 kilómetros, nuestro amor no hizo más que crecer. Mantuvimos viva la llama cada día.</p>
-        <p class="highlight">9 de Julio de 2026: El día que decidimos unir nuestras vidas para siempre en Buenos Aires.</p>
-    </div>
+<section class="section">
+    <p>Año Nuevo fue nuestro primer gran refugio. Una noche de conexión profunda, de risas y de una entrega sincera que marcó el inicio de nuestra complicidad.</p>
+    <img src="hero-beso-noche_2.jpg" class="hero-img" alt="Año Nuevo">
+</section>
 
-    <div class="gallery">
-        <img src="selfie-auto.jpg" alt="Nosotros">
-        <img src="anillos_2.jpg" alt="Nuestros anillos">
-        <img src="hero-beso-noche_2.jpg" alt="Noche en BA">
-        <img src="jardin-japones-selfie_2.jpg" alt="Jardín Japonés">
-    </div>
+<section class="section">
+    <p>Los meses pasaron y la distancia se convirtió en nuestra maestra. Pablo volvió a Buenos Aires, pero aprendimos que el amor real no entiende de mapas. El 9 de julio de 2026, en Buenos Aires, dimos el paso definitivo al comprometernos, reafirmando que nuestro lugar es, y siempre será, junto al otro.</p>
+    <img src="anillos_2.jpg" class="hero-img" alt="Compromiso">
+</section>
 
-    <div class="section dedicatoria">
-        <p>"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas. Cada beso que nos debemos, cada abrazo que espera guarda, va a llegar y lo sabemos."</p>
-    </div>
+<section class="section dedicacion-final">
+    <p class="phrase">"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas."</p>
+    <p>Cada abrazo que aún espera, cada momento compartido y cada sueño que construimos, son la prueba de que este amor crece cada día más.</p>
+    <div class="final-anniversary">Feliz aniversario, mi vida.</div>
+</section>
 
-    <div class="audio-section">
-        <p>Un mensaje del corazón:</p>
-        <audio controls>
-            <source src="poema-gabriel.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-</div>
+<footer>
+    <p>Nuestra banda sonora:</p>
+    <audio controls>
+        <source src="poema-gabriel.mp3" type="audio/mpeg">
+    </audio>
+</footer>
+
+<script>
+    function updateCounter() {
+        const start = new Date("2025-10-11T00:00:00");
+        const now = new Date();
+        const diff = now - start;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('counter').innerText = `Juntos desde hace ${days} días de amor incondicional.`;
+    }
+    updateCounter();
+</script>
 
 </body>
 </html>
