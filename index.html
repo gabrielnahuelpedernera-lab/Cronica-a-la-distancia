@@ -1,140 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel & Pablo · Crónica a la distancia</title>
-    <style>
-        :root {
-            --bg: #fdfbf7;
-            --text: #1a1a1a;
-            --accent: #d45d79;
-            --muted: #666;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gabriel & Pablo · Crónica a la distancia</title>
+<meta name="description" content="La crónica de Gabriel y Pablo: dos ciudades, una promesa. 11.10.2025 — hoy." />
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Work Sans', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            overflow-x: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-        /* Barra de progreso */
-        #progress {
-            position: fixed;
-            top: 0; left: 0; height: 4px;
-            background: var(--accent);
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.2s;
-        }
+<style>
+    :root {
+        --bg: #fdfbf7;
+        --surface: #ffffff;
+        --text: #1a1a1a;
+        --muted: #666563;
+        --muted-light: #8c8682;
+        --accent: #b8435f;
+        --accent-light: #f9f1f2;
+        --border: #e6e0d8;
+    }
 
-        /* Hero elegante */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        h1 { font-family: 'Fraunces', serif; font-size: 5rem; margin: 0; }
-        .amp { color: var(--accent); padding: 0 10px; }
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: 'Work Sans', sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
 
-        /* Efecto Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* Barra de progreso de lectura */
+    .progress {
+        position: fixed;
+        top: 0; left: 0; height: 4px;
+        background: var(--accent);
+        width: 0%;
+        z-index: 1000;
+        transition: width 0.1s ease-out;
+    }
 
-        /* Ticket visual */
-        .ticket {
-            background: white;
-            border: 2px dashed var(--accent);
-            padding: 40px;
-            margin: 50px auto;
-            max-width: 400px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+    /* Hero */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(to bottom, rgba(253, 251, 247, 0.8), var(--bg)), url('hero-beso-noche.jpg') center/cover no-repeat;
+    }
 
-        .num { font-family: 'Space Mono', monospace; font-size: 3rem; color: var(--accent); font-weight: bold; }
+    .hero-content {
+        max-width: 800px;
+        z-index: 2;
+    }
 
-        /* Cronología */
-        .chrono ul { list-style: none; padding: 0; max-width: 800px; margin: 0 auto; }
-        .chrono li { margin-bottom: 60px; display: flex; gap: 40px; }
-        .date { font-family: 'Space Mono', monospace; color: var(--accent); font-weight: bold; min-width: 120px; }
-        
-        /* Carta */
-        .letter-section { padding: 100px 20px; text-align: center; background: #f4efe9; }
+    .eyebrow {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent);
+        margin-bottom: 15px;
+    }
 
-        footer { text-align: center; padding: 50px; font-size: 0.9rem; color: var(--muted); }
+    h1 {
+        font-family: 'Fraunces', serif;
+        font-size: clamp(3.5rem, 8vw, 6rem);
+        font-weight: 500;
+        letter-spacing: -2px;
+        margin-bottom: 20px;
+    }
 
-    </style>
+    .amp { color: var(--accent); padding: 0 5px; }
+
+    .sub {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .stamp {
+        position: absolute;
+        top: 30px; right: 30px;
+        border: 1px dashed var(--accent);
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        background: rgba(255,255,255,0.8);
+    }
+    .stamp b { display: block; color: var(--text); }
+
+    .scroll-cue {
+        position: absolute;
+        bottom: 30px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--muted-light);
+    }
+
+    /* Contenedores y secciones */
+    .wrap-narrow { max-width: 700px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    section { padding: 100px 0; }
+
+    .section-title {
+        font-family: 'Fraunces', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+    }
+
+    .lede { font-size: 1.15rem; color: var(--muted); margin-bottom: 40px; }
+
+    /* Ticket visual */
+    .ticket-section { background-color: var(--accent-light); padding: 80px 20px; text-align: center; }
+    
+    .ticket {
+        background: var(--surface);
+        border: 2px dashed var(--accent);
+        max-width: 450px;
+        margin: 40px auto 0 auto;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(184, 67, 95, 0.08);
+    }
+
+    .ticket-route {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .plane { color: var(--accent); font-size: 1.4rem; }
+    .ticket-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    
+    .num {
+        font-family: 'Space Mono', monospace;
+        font-size: 4rem;
+        color: var(--accent);
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+
+    .lbl { font-weight: 500; font-size: 1.1rem; margin-bottom: 5px; }
+    .since { font-size: 0.85rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
+
+    /* Cronología */
+    .chrono ul {
+        list-style: none;
+        position: relative;
+        padding-left: 30px;
+        margin-top: 60px;
+    }
+
+    .chrono ul::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 10px; bottom: 10px;
+        width: 2px;
+        background: var(--border);
+    }
+
+    .chrono li {
+        position: relative;
+        margin-bottom: 50px;
+        padding-left: 30px;
+    }
+
+    .chrono li::before {
+        content: '';
+        position: absolute;
+        left: -34px; top: 6px;
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid var(--bg);
+    }
+
+    .chrono .date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .chrono .cap {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .chrono .body {
+        color: var(--muted);
+        font-size: 1.05rem;
+    }
+
+    /* Carta */
+    .letter-section { background: var(--surface); text-align: center; }
+    .letter-wrap { max-width: 700px; margin: 0 auto; padding: 0 20px; }
+
+    /* Footer */
+    footer {
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    footer .serif { font-family: 'Fraunces', serif; font-size: 1.5rem; margin-bottom: 20px; }
+    footer .eyebrow { color: var(--accent); margin-bottom: 10px; }
+    footer .fine { font-size: 0.8rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
+
+    /* Efectos de desvanecimiento (Reveal) */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
 </head>
+
 <body>
 
-    <div id="progress"></div>
+<div class="progress" id="progress"></div>
 
-    <header class="hero reveal active">
-        <p>Crónica a la distancia</p>
-        <h1>Gabriel<span class="amp">&</span>Pablo</h1>
-        <p style="max-width: 600px;">Dos ciudades, kilómetros de por medio, pero un amor que no entiende de distancias.</p>
-    </header>
+<header class="hero">
+  <div class="stamp"><div class="stamp-text">Sellado<b>09 · 07 · 2026</b>Buenos Aires</div></div>
+  <div class="hero-content reveal active">
+    <p class="eyebrow">Crónica a la distancia</p>
+    <h1>Gabriel<span class="amp">&</span>Pablo</h1>
+    <p class="sub">
+      Dos ciudades, kilómetros de por medio, pero un amor que no entiende de distancias. Te elijo en cada segundo, en cada día, en cada circunstancia — y te amo con una certeza que no cambia.
+    </p>
+  </div>
+  <div class="scroll-cue">Desliza 👇</div>
+</header>
 
-    <section class="ticket-section">
-        <div class="ticket reveal">
-            <div class="num" id="dayCount">000</div>
-            <p>Días sosteniendo este amor desde el 11.10.2025</p>
+<section class="ticket-section">
+  <div class="wrap-narrow reveal">
+    <p class="eyebrow">El contador</p>
+    <h2 class="section-title">Lo que llevamos sosteniendo esto</h2>
+    <p class="lede">
+      Todo empezó el 11 de octubre de 2025, con un amor que ninguno de los dos esperaba ni buscaba. Simplemente se dio. Desde entonces, nuestro amor creció y creció, y llegó 2026, en donde a los meses te fuiste a Buenos Aires. Pero incluso la distancia, nunca, pero nunca, nos limitó. Nunca dejamos de elegirnos.
+    </p>
+  </div>
+
+  <div class="ticket reveal">
+    <div class="ticket-route">
+      <span class="city">Gabriel</span>
+      <span class="plane">✈</span>
+      <span class="city">Pablo</span>
+    </div>
+    <div class="ticket-divider"></div>
+    <div class="num" id="dayCount">0000</div>
+    <div class="lbl">Días juntos, a la distancia</div>
+    <div class="since">Desde el 11.10.2025</div>
+  </div>
+</section>
+
+<section class="chrono">
+  <div class="wrap-narrow reveal">
+    <p class="eyebrow">La crónica</p>
+    <h2 class="section-title">Cómo llegamos hasta acá</h2>
+  </div>
+
+  <div class="wrap">
+    <ul>
+      <li class="reveal">
+        <div class="date">11.10.2025</div>
+        <div>
+          <div class="cap">El comienzo</div>
+          <div class="body">Empezamos sin buscarlo, sin esperarlo, pero con algo que se sintió real desde el primer momento. Ese día empezó todo… y desde entonces, no dejé de elegirte.</div>
         </div>
-    </section>
+      </li>
 
-    <section class="chrono">
-        <div style="max-width: 800px; margin: auto; padding: 20px;">
-            <ul>
-                <li class="reveal">
-                    <div class="date">11.10.2025</div>
-                    <div><h3>El comienzo</h3><p>Todo empezó sin esperarlo, pero con una certeza que no cambió.</p></div>
-                </li>
-                <li class="reveal">
-                    <div class="date">09.07.2026</div>
-                    <div><h3>El compromiso</h3><p>Ese día te elegí para siempre. Mi amor por vos es incondicional.</p></div>
-                </li>
-            </ul>
+      <li class="reveal">
+        <div class="date">31.12.2025</div>
+        <div>
+          <div class="cap">Nuestro primer Año Nuevo</div>
+          <div class="body">Esa noche la pasamos juntos, cerca, compartiendo algo que no se puede explicar del todo con palabras. Conectamos profundamente y entendí que quería seguir viviendo momentos así con vos.</div>
         </div>
-    </section>
+      </li>
 
-    <script>
-        // Lógica del contador
-        const start = new Date('2025-10-11');
-        const now = new Date();
-        const diff = Math.ceil((now - start) / (1000 * 60 * 60 * 24));
-        document.getElementById('dayCount').innerText = diff;
+      <li class="reveal">
+        <div class="date">Principios de 2026</div>
+        <div>
+          <div class="cap">La distancia</div>
+          <div class="body">La vida nos puso a prueba cuando te mudaste a Buenos Aires. Ahí empezó nuestra relación a distancia, transformándose en la certeza de que lo nuestro no depende de los kilómetros.</div>
+        </div>
+      </li>
 
-        // Efecto de aparición al hacer scroll
-        window.addEventListener('scroll', () => {
-            // Progreso
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
+      <li class="reveal">
+        <div class="date">08.07.2026</div>
+        <div>
+          <div class="cap">Volver a encontrarnos</div>
+          <div class="body">Después de meses, volvimos a vernos. Y todo seguía intacto: el abrazo, la conexión y la forma en que te siento, más fuerte que nunca.</div>
+        </div>
+      </li>
 
-            // Reveals
-            document.querySelectorAll(".reveal").forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                    el.classList.add("active");
-                }
-            });
+      <li class="reveal">
+        <div class="date">09.07.2026</div>
+        <div>
+          <div class="cap">El compromiso</div>
+          <div class="body">Ese día te elegí para siempre. Nos comprometimos con la certeza de que esto no es pasajero. Mi amor por vos es incondicional, profundo y eterno.</div>
+        </div>
+      </li>
+
+      <li class="reveal">
+        <div class="date">Hoy</div>
+        <div>
+          <div class="cap">Lo que somos</div>
+          <div class="body">Hoy sigo eligiéndote en cada segundo. Te amo, te valoro y te disfruto en cada momento, incluso en la distancia. Nada cambia lo que siento por vos.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="letter-section">
+  <div class="letter-wrap reveal">
+    <p class="eyebrow">Para Pablo</p>
+    <h2 class="section-title">Un poema, leído en voz alta</h2>
+    <p style="color: var(--muted-light); font-size: 0.95rem; margin-top: 0.6rem;">
+      Gabriel se lo escribió a Pablo desde el amor más profundo. Como tantas cosas entre ellos, primero fue una nota de voz… porque incluso a la distancia, siempre encuentra la forma de llegar.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p class="serif">— A la distancia, pero amándote en cada segundo.</p>
+  <p class="eyebrow">Gabriel Nahuel Pedernera · Pablo Alejandro Vaccalluzzo</p>
+  <p class="fine">Crónica a la distancia · 11.10.2025 — hoy</p>
+</footer>
+
+<script>
+    // Contador automático de días
+    const startDate = new Date('2025-10-11');
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById('dayCount').innerText = diffDays;
+
+    // Efecto de barra de progreso y aparición al hacer scroll
+    window.addEventListener('scroll', () => {
+        let winScroll = document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
+
+        document.querySelectorAll(".reveal").forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                el.classList.add("active");
+            }
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
