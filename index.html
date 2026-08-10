@@ -2,39 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nuestro Viaje - Para mi vida hermosa</title>
+    <title>Crónica de nuestro amor: Gabriel y Pablo</title>
     <style>
-        body { background: #121212; color: #e0e0e0; font-family: 'Georgia', serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .ticket { background: #fff; color: #333; padding: 20px; border-radius: 10px; width: 350px; border: 2px dashed #ff4757; text-align: center; margin-bottom: 20px; }
-        .hero-img { width: 300px; border-radius: 10px; margin-bottom: 20px; border: 4px solid #fff; }
-        .phrase { font-style: italic; font-size: 1.2rem; color: #ff4757; margin: 20px 0; }
-        .audio-player { background: #333; padding: 15px; border-radius: 50px; }
+        body { background: #0f0f0f; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 700px; width: 100%; text-align: center; }
+        h1 { color: #d63031; font-size: 2.5rem; margin-bottom: 5px; }
+        .sub { font-size: 1.2rem; color: #b2bec3; margin-bottom: 30px; }
+        
+        .section { background: #1a1a1a; padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
+        .highlight { color: #fab1a0; font-weight: bold; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; }
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 2px solid #333; }
+        
+        .dedicatoria { font-style: italic; border-left: 4px solid #d63031; padding-left: 20px; text-align: left; margin: 20px 0; }
+        
+        .audio-section { background: #222; padding: 20px; border-radius: 20px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- Tu Foto Principal -->
-    <img src="selfie-auto.jpg" class="hero-img" alt="Nosotros">
+<div class="container">
+    <h1>Crónica de nuestro amor</h1>
+    <p class="sub">Gabriel & Pablo | 700 km de amor compartido</p>
 
-    <!-- El Ticket Personalizado -->
-    <div class="ticket">
-        <h2 style="color: #ff4757;">TICKET DE AMOR</h2>
-        <p><strong>Destino:</strong> Donde estemos juntos</p>
-        <p><strong>Distancia recorrida:</strong> 700km y más</p>
-        <hr>
-        <p class="phrase">"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas."</p>
+    <div class="section">
+        <h3>El Comienzo (11 de Octubre, 2025)</h3>
+        <p>Todo nació en <span class="highlight">General Cabrera</span>. Allí nos conocimos, allí nos pusimos de novios y allí descubrimos esa conexión única en nuestro primer año nuevo juntos, brindando y entregándonos todo el amor que teníamos para dar.</p>
     </div>
 
-    <!-- Tu Audio -->
-    <div class="audio-player">
+    <div class="section">
+        <h3>La Distancia y la Promesa (2026)</h3>
+        <p>A pesar de que Pablo tuvo que volver a Buenos Aires y nos separaron 700 kilómetros, nuestro amor no hizo más que crecer. Mantuvimos viva la llama cada día.</p>
+        <p class="highlight">9 de Julio de 2026: El día que decidimos unir nuestras vidas para siempre en Buenos Aires.</p>
+    </div>
+
+    <div class="gallery">
+        <img src="selfie-auto.jpg" alt="Nosotros">
+        <img src="anillos_2.jpg" alt="Nuestros anillos">
+        <img src="hero-beso-noche_2.jpg" alt="Noche en BA">
+        <img src="jardin-japones-selfie_2.jpg" alt="Jardín Japonés">
+    </div>
+
+    <div class="section dedicatoria">
+        <p>"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas. Cada beso que nos debemos, cada abrazo que espera guarda, va a llegar y lo sabemos."</p>
+    </div>
+
+    <div class="audio-section">
+        <p>Un mensaje del corazón:</p>
         <audio controls>
             <source src="poema-gabriel.mp3" type="audio/mpeg">
-            Tu navegador no soporta audio.
         </audio>
     </div>
+</div>
 
-    <script>
-        console.log("Experiencia cargada con éxito para ustedes dos.");
-    </script>
 </body>
 </html>
