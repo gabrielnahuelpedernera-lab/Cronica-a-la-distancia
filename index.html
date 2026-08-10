@@ -1,468 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gabriel & Pablo · Crónica a la distancia</title>
-<meta name="description" content="La crónica de Gabriel y Pablo: dos ciudades, una promesa. 11.10.2025 — hoy." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
-<style>
-    :root {
-        --bg: #fdfbf7;
-        --surface: #ffffff;
-        --text: #1a1a1a;
-        --muted: #666563;
-        --muted-light: #8c8682;
-        --accent: #b8435f;
-        --accent-light: #f9f1f2;
-        --border: #e6e0d8;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: 'Work Sans', sans-serif;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    .progress {
-        position: fixed;
-        top: 0; left: 0; height: 4px;
-        background: var(--accent);
-        width: 0%;
-        z-index: 1000;
-        transition: width 0.1s ease-out;
-    }
-
-    .hero {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 40px 20px;
-        background: linear-gradient(to bottom, rgba(253, 251, 247, 0.4), var(--bg)), url('hero-beso-noche.jpg') center/cover no-repeat;
-        color: white;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.35);
-        z-index: 1;
-    }
-
-    .hero-content, .stamp, .scroll-cue {
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero-content { max-width: 800px; }
-
-    .eyebrow {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #ffb6c1;
-        margin-bottom: 15px;
-    }
-
-    h1 {
-        font-family: 'Fraunces', serif;
-        font-size: clamp(3.5rem, 8vw, 6rem);
-        font-weight: 500;
-        letter-spacing: -2px;
-        margin-bottom: 20px;
-    }
-
-    .amp { color: #ffb6c1; padding: 0 5px; }
-
-    .sub {
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        color: #f0f0f0;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .stamp {
-        position: absolute;
-        top: 30px; right: 30px;
-        border: 1px dashed rgba(255,255,255,0.7);
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-family: 'Space Mono', monospace;
-        font-size: 0.75rem;
-        color: #fff;
-        background: rgba(0,0,0,0.3);
-    }
-    .stamp b { display: block; color: #ffb6c1; }
-
-    .scroll-cue {
-        position: absolute;
-        bottom: 30px;
-        font-family: 'Space Mono', monospace;
-        font-size: 0.8rem;
-        color: #fff;
-    }
-
-    .wrap-narrow { max-width: 700px; margin: 0 auto; padding: 0 20px; text-align: center; }
-    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-    section { padding: 100px 0; }
-
-    .section-title {
-        font-family: 'Fraunces', serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 20px;
-        letter-spacing: -1px;
-    }
-
-    .lede { font-size: 1.15rem; color: var(--muted); margin-bottom: 40px; }
-
-    /* Ticket visual */
-    .ticket-section { background-color: var(--accent-light); padding: 80px 20px; text-align: center; }
-    
-    .ticket {
-        background: var(--surface);
-        border: 2px dashed var(--accent);
-        max-width: 450px;
-        margin: 40px auto 0 auto;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(184, 67, 95, 0.08);
-    }
-
-    .ticket-route {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        font-size: 1.1rem;
-        margin-bottom: 20px;
-    }
-
-    .plane { color: var(--accent); font-size: 1.4rem; }
-    .ticket-divider { height: 1px; background: var(--border); margin: 20px 0; }
-    
-    .num {
-        font-family: 'Space Mono', monospace;
-        font-size: 4rem;
-        color: var(--accent);
-        font-weight: 700;
-        line-height: 1;
-        margin-bottom: 10px;
-    }
-
-    .lbl { font-weight: 500; font-size: 1.1rem; margin-bottom: 5px; }
-    .since { font-size: 0.85rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
-
-    /* Cronología con fotos */
-    .chrono ul {
-        list-style: none;
-        position: relative;
-        padding-left: 30px;
-        margin-top: 60px;
-    }
-
-    .chrono ul::before {
-        content: '';
-        position: absolute;
-        left: 0; top: 10px; bottom: 10px;
-        width: 2px;
-        background: var(--border);
-    }
-
-    .chrono li {
-        position: relative;
-        margin-bottom: 70px;
-        padding-left: 30px;
-    }
-
-    .chrono li::before {
-        content: '';
-        position: absolute;
-        left: -34px; top: 6px;
-        width: 10px; height: 10px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 3px solid var(--bg);
-    }
-
-    .chrono .date {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.85rem;
-        color: var(--accent);
-        font-weight: 700;
-        margin-bottom: 5px;
-    }
-
-    .chrono .cap {
-        font-family: 'Fraunces', serif;
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-    }
-
-    .chrono .body {
-        color: var(--muted);
-        font-size: 1.05rem;
-        margin-bottom: 20px;
-    }
-
-    .chrono-img {
-        width: 100%;
-        max-height: 450px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        margin-top: 15px;
-    }
-
-    /* Galería de Recuerdos / Fotos Extras */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        margin-top: 40px;
-    }
-
-    .gallery-item {
-        background: var(--surface);
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: 260px;
-        object-fit: cover;
-    }
-
-    .gallery-caption {
-        padding: 15px;
-        text-align: center;
-        font-size: 0.95rem;
-        color: var(--muted);
-    }
-
-    /* Carta / Poema */
-    .letter-section { background: var(--surface); text-align: center; }
-    .letter-wrap { max-width: 700px; margin: 0 auto; padding: 0 20px; }
-
-    /* Footer */
-    footer {
-        background: #1a1a1a;
-        color: white;
-        text-align: center;
-        padding: 80px 20px;
-    }
-
-    footer .serif { font-family: 'Fraunces', serif; font-size: 1.5rem; margin-bottom: 20px; }
-    footer .eyebrow { color: #ffb6c1; margin-bottom: 10px; }
-    footer .fine { font-size: 0.8rem; color: var(--muted-light); font-family: 'Space Mono', monospace; }
-
-    /* Animaciones Reveal */
-    .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi vida hermosa</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: #2b2b2b;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            border: 1px solid #444;
+        }
+        h1 {
+            color: #ffb6c1;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .poem {
+            text-align: left;
+            line-height: 1.6;
+            font-size: 1rem;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-left: 4px solid #ffb6c1;
+            margin-bottom: 25px;
+        }
+        .signature {
+            font-weight: bold;
+            color: #ffb6c1;
+            margin-top: 15px;
+            text-align: right;
+        }
+        .footer-note {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="progress" id="progress"></div>
+    <div class="card">
+        <h1>Latido Inmenso</h1>
+        <div class="subtitle">"Como si se expandiera un fuego que no se va..."</div>
+        
+        <div class="poem">
+            <p>Ya aviso y te quedaste sin permiso.<br>
+            Ahora sos parte de mi latido,<br>
+            lo más seguro que he sentido.<br>
+            Ya no hay vuelta atrás posible,<br>
+            ya no hay forma de pensarme<br>
+            sin este amor invencible,<br>
+            sin tenerte para completarme.</p>
 
-<header class="hero">
-  <div class="stamp"><div class="stamp-text">Sellado<b>09 · 07 · 2026</b>Buenos Aires</div></div>
-  <div class="hero-content reveal active">
-    <p class="eyebrow">Crónica a la distancia</p>
-    <h1>Gabriel<span class="amp">&</span>Pablo</h1>
-    <p class="sub">
-      Dos ciudades, kilómetros de por medio, pero un amor que no entiende de distancias. Te elijo en cada segundo, en cada día, en cada circunstancia — y te amo con una certeza que no cambia.
-    </p>
-  </div>
-  <div class="scroll-cue">Desliza 👇</div>
-</header>
+            <p>Cada día te amo más y más,<br>
+            sin saber cómo ni por qué será,<br>
+            como si este amor no tuviera final,<br>
+            como si se expandiera un fuego que no se va.</p>
 
-<section class="ticket-section">
-  <div class="wrap-narrow reveal">
-    <p class="eyebrow">El contador</p>
-    <h2 class="section-title">Lo que llevamos sosteniendo esto</h2>
-    <p class="lede">
-      Todo empezó el 11 de octubre de 2025, con un amor que ninguno de los dos esperaba ni buscaba. Simplemente se dio. Desde entonces, nuestro amor creció y creció, y llegó 2026, en donde a los meses te fuiste a Buenos Aires. Pero incluso la distancia, nunca, pero nunca, nos limitó. Nunca dejamos de elegirnos.
-    </p>
-  </div>
+            <p>La distancia debería cesar,<br>
+            debería en algún momento aflojar,<br>
+            y, sin embargo, hace lo contrario:<br>
+            nos recuerda que esto es extraordinario.</p>
 
-  <div class="ticket reveal">
-    <div class="ticket-route">
-      <span class="city">Gabriel</span>
-      <span class="plane">✈</span>
-      <span class="city">Pablo</span>
+            <p>Setecientos kilómetros por medio...<br>
+            no lograron jamás lo que debían.<br>
+            Cada despedida es una promesa<br>
+            de que esto sigue, de que crecía.</p>
+
+            <p>Hoy te espero con el alma abierta,<br>
+            con un café que se enfría despacio,<br>
+            contando el tiempo hasta la puerta<br>
+            donde se abra y donde no abra más espacio.</p>
+
+            <p>Cada beso que nos debemos, cada abrazo que espera guarda,<br>
+            va a llegar y lo sabemos,<br>
+            como se cumple lo que el alma aguarda.</p>
+
+            <p>Vamos a aprender del otro entero,<br>
+            sin apuro, con paciencia y calma,<br>
+            a construir lo que ya siento:<br>
+            un hogar hecho de dos almas.</p>
+
+            <p>Y aunque el mundo no lo sepa,<br>
+            yo sé que esta es de las mejores semanas,<br>
+            porque volví a verte<br>
+            y en tu mirada encontré todo lo que me faltaba.</p>
+
+            <div class="signature">Pablo Alejandro Colusso<br>Te amo, mi vida hermosa.</div>
+        </div>
+
+        <div class="footer-note">
+            Cada recuerdo en foto y cada verso guardado para cuando nos volvamos a encontrar.
+        </div>
     </div>
-    <div class="ticket-divider"></div>
-    <div class="num" id="dayCount">0000</div>
-    <div class="lbl">Días juntos, a la distancia</div>
-    <div class="since">Desde el 11.10.2025</div>
-  </div>
-</section>
-
-<section class="chrono">
-  <div class="wrap-narrow reveal">
-    <p class="eyebrow">La crónica</p>
-    <h2 class="section-title">Cómo llegamos hasta acá</h2>
-  </div>
-
-  <div class="wrap">
-    <ul>
-      <li class="reveal">
-        <div class="date">11.10.2025</div>
-        <div>
-          <div class="cap">El comienzo</div>
-          <div class="body">Empezamos sin buscarlo, sin esperarlo, pero con algo que se sintió real desde el primer momento. Ese día empezó todo… y desde entonces, no dejé de elegirte.</div>
-        </div>
-      </li>
-
-      <li class="reveal">
-        <div class="date">31.12.2025</div>
-        <div>
-          <div class="cap">Nuestro primer Año Nuevo</div>
-          <div class="body">Esa noche la pasamos juntos, cerca, compartiendo algo que no se puede explicar del todo con palabras. Conectamos profundamente, disfrutamos cada instante y entendí que quería seguir viviendo momentos así con vos.</div>
-        </div>
-        <img src="brindis-fin-de-anio.jpg" alt="Brindis de fin de año" class="chrono-img">
-      </li>
-
-      <li class="reveal">
-        <div class="date">Principios de 2026</div>
-        <div>
-          <div class="cap">La distancia</div>
-          <div class="body">La vida nos puso a prueba cuando te mudaste a Buenos Aires. Ahí empezó nuestra relación a distancia. Pero lo que podría haber sido un límite, se transformó en una certeza: lo nuestro no depende de los kilómetros.</div>
-        </div>
-      </li>
-
-      <li class="reveal">
-        <div class="date">08.07.2026</div>
-        <div>
-          <div class="cap">Volver a encontrarnos</div>
-          <div class="body">Después de meses, volvimos a vernos. Y todo seguía intacto. El abrazo, la conexión, la forma en que te siento… todo seguía ahí, más fuerte que nunca.</div>
-        </div>
-        <img src="abrazo-arcos.jpg" alt="Abrazo bajo los arcos" class="chrono-img">
-      </li>
-
-      <li class="reveal">
-        <div class="date">09.07.2026</div>
-        <div>
-          <div class="cap">El compromiso</div>
-          <div class="body">Ese día te elegí para siempre. Nos comprometimos con la certeza de que esto no es pasajero. Mi amor por vos es incondicional, profundo y eterno.</div>
-        </div>
-        <img src="anillos.jpg" alt="Anillos de compromiso" class="chrono-img">
-      </li>
-
-      <li class="reveal">
-        <div class="date">Hoy</div>
-        <div>
-          <div class="cap">Lo que somos</div>
-          <div class="body">Hoy sigo eligiéndote en cada segundo. Te amo, te valoro y te disfruto en cada momento, incluso en la distancia. Nada cambia lo que siento por vos: mi amor permanece intacto, impoluto, y es para siempre.</div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ÁLBUM DE FOTOGRAFÍAS -->
-<section style="background-color: var(--accent-light); padding: 80px 0;">
-  <div class="wrap">
-    <div class="wrap-narrow reveal" style="margin-bottom: 40px;">
-      <p class="eyebrow">Galería</p>
-      <h2 class="section-title">Instantes que guardamos en el alma</h2>
-    </div>
-
-    <div class="gallery-grid reveal">
-      <div class="gallery-item">
-        <img src="jardin-japones-selfie.jpg" alt="Selfie en el Jardín Japonés">
-        <div class="gallery-caption">Paseando por el Jardín Japonés</div>
-      </div>
-      <div class="gallery-item">
-        <img src="cerezo-puente-rojo.jpg" alt="Cerezo y puente rojo">
-        <div class="gallery-caption">El puente rojo y los cerezos</div>
-      </div>
-      <div class="gallery-item">
-        <img src="jardin-panoramica.jpg" alt="Panorámica del jardín">
-        <div class="gallery-caption">Vistas que enamoran</div>
-      </div>
-      <div class="gallery-item">
-        <img src="koi.jpg" alt="Peces Koi">
-        <div class="gallery-caption">Fluyendo juntos</div>
-      </div>
-      <div class="gallery-item">
-        <img src="kimono-museo.jpg" alt="Kimono en museo">
-        <div class="gallery-caption">Arte y cultura</div>
-      </div>
-      <div class="gallery-item">
-        <img src="beso-arcos.jpg" alt="Beso bajo los arcos">
-        <div class="gallery-caption">Complicidad en cada rincón</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="letter-section">
-  <div class="letter-wrap reveal">
-    <p class="eyebrow">Para Pablo</p>
-    <h2 class="section-title">Un poema, leído en voz alta</h2>
-    <p style="color: var(--muted-light); font-size: 0.95rem; margin-top: 0.6rem;">
-      Gabriel se lo escribió a Pablo desde el amor más profundo. Como tantas cosas entre ellos, primero fue una nota de voz… porque incluso a la distancia, siempre encuentra la forma de llegar.
-    </p>
-  </div>
-</section>
-
-<footer>
-  <p class="serif">— A la distancia, pero amándote en cada segundo.</p>
-  <p class="eyebrow">Gabriel Nahuel Pedernera · Pablo Alejandro Vaccalluzzo</p>
-  <p class="fine">Crónica a la distancia · 11.10.2025 — hoy</p>
-</footer>
-
-<script>
-    // Contador automático de días exactos
-    const startDate = new Date('2025-10-11');
-    const today = new Date();
-    const diffTime = Math.abs(today - startDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    document.getElementById('dayCount').innerText = diffDays;
-
-    // Efecto barra de progreso y aparición suave al hacer scroll
-    window.addEventListener('scroll', () => {
-        let winScroll = document.documentElement.scrollTop;
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
-
-        document.querySelectorAll(".reveal").forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-                el.classList.add("active");
-            }
-        });
-    });
-    
-    // Activar los elementos iniciales visibles al cargar
-    window.dispatchEvent(new Event('scroll'));
-</script>
 
 </body>
 </html>
