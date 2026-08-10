@@ -1,110 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Crónica de nuestro amor: Gabriel y Pablo</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap');
-        
-        body { 
-            margin: 0; 
-            background-color: #fdf6f3; /* Beige muy suave */
-            color: #5a4a4a; /* Marrón elegante */
-            font-family: 'Montserrat', sans-serif; 
-            line-height: 1.8; 
-        }
-        
-        header { padding: 80px 20px; text-align: center; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #a83232; margin-bottom: 5px; } /* Rojo elegante */
-        #counter { font-size: 1.1rem; color: #d67d8d; font-weight: 500; } /* Rosa empolvado */
-        
-        .section { padding: 60px 20px; max-width: 600px; margin: auto; text-align: center; }
-        .hero-img { 
-            width: 100%; 
-            border-radius: 20px; 
-            margin: 25px 0; 
-            box-shadow: 0 10px 30px rgba(168, 50, 50, 0.15); 
-            border: 4px solid #fff; 
-        }
-        
-        .dedicacion-final { 
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 30px; 
-            margin: 40px auto; 
-            border: 1px solid #f2e2e2;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        .phrase { 
-            font-family: 'Playfair Display', serif; 
-            font-style: italic; 
-            font-size: 1.4rem; 
-            color: #8b2626; 
-            margin-bottom: 20px; 
-        }
-        
-        .final-anniversary { 
-            font-size: 2rem; 
-            color: #d67d8d; 
-            font-family: 'Playfair Display', serif; 
-            margin-top: 30px; 
-            font-weight: bold; 
-        }
-        
-        footer { padding: 50px; text-align: center; color: #a83232; }
-        audio { 
-            width: 100%; 
-            max-width: 350px; 
-            margin-top: 20px;
-            filter: sepia(0.5); /* Le da un tono más cálido al player */
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel & Pablo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #0f0f14;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url('selfie-auto.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+}
+
+/* SECCIONES */
+.section {
+    max-width: 700px;
+    margin: auto;
+    padding: 80px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+img {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+/* MENSAJES */
+#message {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+/* CORAZONES */
+.heart {
+    position: fixed;
+    color: #ff4d6d;
+    font-size: 24px;
+    cursor: pointer;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* PARTÍCULAS */
+.particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    animation: explode 0.8s forwards;
+}
+
+@keyframes explode {
+    to {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+/* FINAL */
+.final {
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 40px;
+}
+
+.phrase {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #ff9aa2;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Crónica de nuestro amor</h1>
-    <p>Gabriel & Pablo</p>
-    <div id="counter">Cargando nuestra historia...</div>
-</header>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Crónica de nuestro amor</h1>
+        <p>Gabriel & Pablo</p>
+        <div id="counter"></div>
+    </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section">
+    <p>Todo comenzó un 11 de octubre de 2025 en General Cabrera. Allí donde nuestras vidas se encontraron, empezamos una historia que fue creciendo más fuerte que cualquier distancia.</p>
+    <img src="selfie-auto.jpg">
+</section>
 
 <section class="section">
-    <p>Todo comenzó un 11 de octubre de 2025 en General Cabrera. Allí donde nuestras vidas se encontraron, decidimos escribir una historia que ha demostrado ser más fuerte que cualquier kilómetro.</p>
-    <img src="selfie-auto.jpg" class="hero-img" alt="Nuestro inicio">
+    <p>Año Nuevo fue nuestro primer refugio. Una noche donde todo se sintió distinto, más real… donde empezó nuestra complicidad.</p>
+    <img src="hero-beso-noche_2.jpg">
 </section>
 
 <section class="section">
-    <p>Año Nuevo fue nuestro primer gran refugio. Una noche de conexión profunda, de risas y de una entrega sincera que marcó el inicio de nuestra complicidad.</p>
-    <img src="hero-beso-noche_2.jpg" class="hero-img" alt="Año Nuevo">
+    <p>La distancia nos puso a prueba. Pablo volvió a Buenos Aires, pero aprendimos que el amor verdadero no entiende de kilómetros. Y el 9 de julio de 2026 dimos el paso más importante: elegirnos para siempre.</p>
+    <img src="anillos_2.jpg">
 </section>
 
-<section class="section">
-    <p>Los meses pasaron y la distancia se convirtió en nuestra maestra. Pablo volvió a Buenos Aires, pero aprendimos que el amor real no entiende de mapas. El 9 de julio de 2026, en Buenos Aires, dimos el paso definitivo al comprometernos, reafirmando que nuestro lugar es, y siempre será, junto al otro.</p>
-    <img src="anillos_2.jpg" class="hero-img" alt="Compromiso">
+<section class="section final">
+    <p class="phrase">"Lo que llevamos amándonos mientras sostenemos todo lo demás."</p>
+    <p>Cada abrazo pendiente, cada risa compartida, cada momento… todo confirma que este amor no deja de crecer.</p>
 </section>
 
-<section class="section dedicacion-final">
-    <p class="phrase">"Lo que llevamos amándonos mientras sostenemos esto cuando tenemos que hacer otras cosas."</p>
-    <p>Cada abrazo que aún espera, cada momento compartido y cada sueño que construimos, son la prueba de que este amor crece cada día más.</p>
-    <div class="final-anniversary">Feliz aniversario, mi vida.</div>
-</section>
-
-<footer>
-    <p>Nuestra banda sonora:</p>
-    <audio controls>
-        <source src="poema-gabriel.mp3" type="audio/mpeg">
-    </audio>
-</footer>
+<div id="message"></div>
 
 <script>
-    function updateCounter() {
-        const start = new Date("2025-10-11T00:00:00");
-        const now = new Date();
-        const diff = now - start;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('counter').innerText = `Juntos desde hace ${days} días de amor incondicional.`;
+/* CONTADOR */
+function updateCounter() {
+    const start = new Date("2025-10-11");
+    const now = new Date();
+    const diff = now - start;
+    const days = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("counter").innerText =
+        `Juntos desde hace ${days} días 💛`;
+}
+updateCounter();
+
+/* SCROLL */
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight * 0.85) {
+            sec.classList.add('visible');
+        }
+    });
+});
+
+/* MENSAJES */
+const messages = [
+    "Te amo ❤️",
+    "Sos mi hogar",
+    "Siempre vos",
+    "Mi lugar favorito",
+    "Elegirte es fácil",
+    "Mi persona"
+];
+
+let clicks = 0;
+
+/* CORAZONES */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    heart.onclick = (e) => {
+        explode(e.clientX, e.clientY);
+        heart.remove();
+        showMessage();
+    };
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 600);
+
+/* EXPLOSIÓN */
+function explode(x, y) {
+    for (let i = 0; i < 12; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+
+        p.style.left = x + "px";
+        p.style.top = y + "px";
+
+        const angle = Math.random() * 2 * Math.PI;
+        const dist = 80 + Math.random() * 40;
+
+        p.style.setProperty("--x", Math.cos(angle) * dist + "px");
+        p.style.setProperty("--y", Math.sin(angle) * dist + "px");
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 800);
     }
-    updateCounter();
+}
+
+/* MENSAJE FINAL */
+function showMessage() {
+    const msg = document.getElementById("message");
+    clicks++;
+
+    if (clicks > 10) {
+        msg.innerText = "Feliz aniversario, mi vida. Te amo ❤️";
+    } else {
+        msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    msg.style.opacity = 1;
+    setTimeout(() => msg.style.opacity = 0, 2000);
+}
 </script>
 
 </body>
